@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Addpost from "./components/addpost";
+import Loadingspinner from "./components/loadingspinner";
+import Notfound from "./components/notfound";
+import Postlist from "./components/postlist";
+import Updatepost from "./components/updatepost";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  { index: true, element: <Postlist /> },
+  { path: "/create", element: <Addpost /> },
+  { path: "/update/:postid", element: <Updatepost /> },
+  { path: "*", element: <Notfound /> },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
